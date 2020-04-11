@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "SelectRutina"
+    }
+  },
+  "defaultProject": "SelectRutina",
+  "cli": {
+    "analytics": false
+  }
 }
