@@ -1,8 +1,14 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
+import { EjecRutinaComponent } from './components/ejec-rutina/ejec-rutina.component';
+import { HomeComponent } from './components/home/home.component';
 
-
-const routes: Routes = [];
+const routes: Routes = [
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
+  { path: 'play', component: EjecRutinaComponent },
+  { path: '**', component: HomeComponent }
+];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
