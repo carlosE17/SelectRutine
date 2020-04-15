@@ -75,7 +75,7 @@
         <ul class="list-group mb-3">
             <li *ngFor="let e of ArregloEjercicios" class="list-group-item d-flex justify-content-between lh-condensed">
                 <div>
-                    <h6 class="my-0">Tipo:{{e.Te}}</h6>
+                    <h6 class="my-0">Tipo:{{TiposDeEjercicio[e.tipo]}}</h6>
                     <small class="text-muted">{{DescripcionEjercicio[e.tipo]}}</small>
                 </div>
                 <span class="text-muted">Sets: {{e.nSets}}</span>

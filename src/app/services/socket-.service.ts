@@ -52,6 +52,22 @@ export class SocketService {
     });
   }
 
+  public getb = () => {
+    return Observable.create((observer) => {
+      this.socket.on('buenas', (v) => {
+        observer.next(v);
+      });
+    });
+  }
+
+  public getm = () => {
+    return Observable.create((observer) => {
+      this.socket.on('malas', (v) => {
+        observer.next(v);
+      });
+    });
+  }
+
 
 
 }

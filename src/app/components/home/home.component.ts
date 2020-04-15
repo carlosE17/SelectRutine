@@ -29,9 +29,9 @@ export class HomeComponent implements OnInit {
 
   setTipo(i: TipoEjercicio) {
     this.tipoActual = i;
+    console.log(this.tipoActual);
   }
   addToRutina(s: number, r: number) {
-
     this.ArregloEjercicios.push({ tipo: this.tipoActual, nSets: s, nReps: r });
     localStorage.setItem(this.nArr, JSON.stringify(this.ArregloEjercicios));
   }

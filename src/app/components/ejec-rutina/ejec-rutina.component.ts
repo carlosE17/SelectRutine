@@ -21,6 +21,8 @@ export class EjecRutinaComponent implements OnInit {
   totalSets = 2;
   ejercicioActual = 0;
   activo = true;
+  malas=0;
+  buenas=0;
   constructor(private servicioHttp: ApiService, private socketConnection: SocketService) {
   }
 
@@ -55,6 +57,14 @@ export class EjecRutinaComponent implements OnInit {
 
     this.socketConnection.getTs().subscribe((v: number) => {
       this.totalSets = v;
+    });
+
+    this.socketConnection.getb().subscribe((v: number) => {
+      this.buenas = v;
+    });
+
+    this.socketConnection.getm().subscribe((v: number) => {
+      this.malas = v;
     });
 
 
