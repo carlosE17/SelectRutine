@@ -12,18 +12,18 @@ export class SocketService {
     this.socket = io.connect(this.url);
   }
 
-  public prueba(){
-    this.socket.on('prueba',function(ret){
+  public prueba() {
+    this.socket.on('prueba', function (ret) {
       console.log(ret);
     });
   }
 
   public getPeso = () => {
-    
-      this.socket.on('getPeso', (v) => {
-       return Number(v);
-      });
-    
+
+    return new Observable(observer => {
+      this.socket.on('getPeso', (v) => observer.next(v));
+    });
+
   }
 
   public getReps = () => {
@@ -57,7 +57,7 @@ export class SocketService {
       });
     });
   }
-  
+
 
 
 }
