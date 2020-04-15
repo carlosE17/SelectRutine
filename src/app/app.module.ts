@@ -9,13 +9,15 @@ import { BarraComponent } from './components/barra/barra.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ApiService} from './services/api.service';
 import {SocketService} from './services/socket-.service';
+import { AnalyticsComponent } from './components/analytics/analytics.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     EjecRutinaComponent,
     HomeComponent,
-    BarraComponent
+    BarraComponent,
+    AnalyticsComponent
   ],
   imports: [
     BrowserModule,
