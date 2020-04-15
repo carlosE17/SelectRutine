@@ -14,6 +14,8 @@ export class ApiService {
   pruebaGet() {
     console.log(`${this.localUrl}/get`);
     return this.http.get(`${this.localUrl}/get`);
-
+  }
+  saveRutina(ListaE) {
+    //enviar al servidor
   }
 }

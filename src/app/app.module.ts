@@ -8,6 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { BarraComponent } from './components/barra/barra.component';
 import { HttpClientModule } from '@angular/common/http';
 import {ApiService} from './services/api.service';
+import {SocketService} from './services/socket-.service';
 
 @NgModule({
   declarations: [
@@ -23,7 +24,7 @@ import {ApiService} from './services/api.service';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [ApiService],
+  providers: [ApiService,SocketService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
