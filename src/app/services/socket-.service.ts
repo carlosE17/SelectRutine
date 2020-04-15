@@ -12,12 +12,6 @@ export class SocketService {
     this.socket = io.connect(this.url);
   }
 
-  public prueba() {
-    this.socket.on('prueba', function (ret) {
-      console.log(ret);
-    });
-  }
-
   public getPeso = () => {
 
     return new Observable(observer => {

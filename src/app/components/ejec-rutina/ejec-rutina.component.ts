@@ -36,7 +36,6 @@ export class EjecRutinaComponent implements OnInit {
       }
 
     });
-    this.socketConnection.prueba();
 
     this.socketConnection.getPeso().subscribe((v: number) => {
       this.peso = v;
@@ -57,11 +56,6 @@ export class EjecRutinaComponent implements OnInit {
     this.socketConnection.getTs().subscribe((v: number) => {
       this.totalSets = v;
     });
-
-
-  }
-
-  valoresSocket() {
 
 
   }
