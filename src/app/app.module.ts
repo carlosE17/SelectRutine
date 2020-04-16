@@ -10,6 +10,7 @@ import { HttpClientModule } from '@angular/common/http';
 import {ApiService} from './services/api.service';
 import {SocketService} from './services/socket-.service';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
+import { ContactoComponent } from './components/contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
     EjecRutinaComponent,
     HomeComponent,
     BarraComponent,
-    AnalyticsComponent
+    AnalyticsComponent,
+    ContactoComponent
   ],
   imports: [
     BrowserModule,

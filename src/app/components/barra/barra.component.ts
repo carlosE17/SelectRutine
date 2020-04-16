@@ -10,6 +10,8 @@ export class BarraComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    console.log();
+  
   }
 
 }

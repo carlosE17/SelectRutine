@@ -1,101 +1,152 @@
 <app-barra></app-barra>
-<h1>Preparado, listo, Comenzamos... </h1>
 
-<br>
-<div class="row" style="background-color:azure;">
+<div class="container p-4">
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card text-center">
+                <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
+                    No Pain, No Gain!
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-center">
+                                <div
+                                    class="card-header bg-light text-black d-flex justify-content-between align-items-center">
+                                    Datos Actuales
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid" src='../../../assets/media/clock.png'>
+                                                </div>
+                                                <div class="col-md-9">
+                                                    Tiempo:
+                                                    min: <span class="badge badge-secondary">{{min}}</span> seg:
+                                                    <span class="badge badge-secondary">{{seg}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid" src='../../../assets/media/gym.png'>
+                                                </div>
 
-    <div class="col-sm-4">
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="img-fluid" src='../../../assets/media/clock.png'>
-            </div>
+                                                <div class="col-md-9">Peso:
+                                                    <span class="badge badge-secondary">{{peso}} Kg.</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid" src='../../../assets/media/count.png'>
+                                                </div>
 
-            <div class="col-sm-6" style="background-color:gainsboro;">
-                <h2><b>Tiempo:</b></h2>
-                <h2>min: <span class="badge badge-secondary">{{min}}</span> seg: <span
-                        class="badge badge-secondary">{{seg}}</span></h2>
+                                                <div class="col-md-9">
+                                                    Repeticiones:
+                                                    <span class="badge badge-secondary">{{reps}}</span>/{{totalReps}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <hr>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid" src='../../../assets/media/countdown.png'>
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                    Sets:
+                                                    <span class="badge badge-secondary">{{sets}}</span>/{{totalSets}}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid" src='../../../assets/media/bien.png'>
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                    Total buenas:
+                                                    <span class="badge badge-secondary">{{buenas}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <div class="row">
+                                                <div class="col-md-3">
+                                                    <img class="img-fluid" src='../../../assets/media/mal.png'>
+                                                </div>
+
+                                                <div class="col-md-9">
+                                                    Total malas:
+                                                    <span class="badge badge-secondary">{{malas}}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-center">
+                                <div
+                                    class="card-header bg-light text-black d-flex justify-content-between align-items-center">
+                                    Control
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <button (click)="continuar()" class="btn btn-info btn-lg btn-block"
+                                                type="submit">
+                                                Continuar
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button (click)="pausar()" class="btn btn-warning btn-lg btn-block"
+                                                type="submit">
+                                                Pausar
+                                            </button>
+                                        </div>
+                                        <div class="col-md-4">
+                                            <button (click)="finalizar()" class="btn btn-danger btn-lg btn-block"
+                                                type="submit">
+                                                Finalizar
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card text-center">
+                                <div
+                                    class="card-header bg-light text-black d-flex justify-content-between align-items-center">
+                                    Ejercicio Actual: {{TiposDeEjercicio[ejercicioActual]}}
+                                </div>
+                                <div class="card-body">
+                                    <div class="row"> 
+                                        <img src={{PathGifs[ejercicioActual]}} class="img-fluid rounded mx-auto d-block">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="img-fluid" src='../../../assets/media/gym.png'>
-            </div>
-
-            <div class="col-sm-6" style="background-color:gainsboro;">
-                <h2><b>Peso:</b></h2>
-                <h2><span class="badge badge-secondary">{{peso}}</span> Kg.</h2>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="img-fluid" src='../../../assets/media/count.png'>
-            </div>
-
-            <div class="col-sm-6" style="background-color:gainsboro;">
-                <h2><b>Repeticiones:</b></h2>
-                <h2><span class="badge badge-secondary">{{reps}}</span>/{{totalReps}}</h2>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="img-fluid" src='../../../assets/media/countdown.png'>
-            </div>
-
-            <div class="col-sm-6" style="background-color:gainsboro;">
-                <h2><b>Sets:</b></h2>
-                <h2><span class="badge badge-secondary">{{sets}}</span>/{{totalSets}}</h2>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="img-fluid" src='../../../assets/media/bien.png'>
-            </div>
-
-            <div class="col-sm-6" style="background-color:gainsboro;">
-                <h2><b>Total buenas:</b></h2>
-                <h2><span class="badge badge-secondary">{{buenas}}</span></h2>
-            </div>
-        </div>
-        <br>
-        <div class="row">
-            <div class="col-sm-3">
-                <img class="img-fluid" src='../../../assets/media/mal.png'>
-            </div>
-
-            <div class="col-sm-6" style="background-color:gainsboro;">
-                <h2><b>Total malas:</b></h2>
-                <h2><span class="badge badge-secondary">{{malas}}</span></h2>
-            </div>
-        </div>
-
-
-    </div>
-    <div class="col-sm-4">
-
-        <br><br><br><br>
-        <button (click)="continuar()" class="btn btn-info btn-lg btn-block" type="submit">
-            Continuar
-        </button>
-        <br><br>
-        <button (click)="pausar()" class="btn btn-warning btn-lg btn-block" type="submit">
-            pausar
-        </button>
-        <br><br>
-        <button (click)="finalizar()" class="btn btn-danger btn-lg btn-block" type="submit">
-            Finalizar
-        </button>
-
-
-    </div>
-    <div class="col-sm-4">
-        <h2><b>{{TiposDeEjercicio[ejercicioActual]}}</b></h2>
-        <br>
-        <img class="img-fluid" src={{PathGifs[ejercicioActual]}}>
     </div>
 </div>
-
-<br>
+<hr>

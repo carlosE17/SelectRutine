@@ -22,7 +22,7 @@ export class HomeComponent implements OnInit {
   t = 'Formulario';
   tipoActual = TipoEjercicio.Espalda;
   constructor(private titleService: Title) {
-    this.titleService.setTitle('Rutinas');
+    // this.titleService.setTitle('Rutinas');
     this.TiposDeEjercicio = ["Remo Horizontal - Espalda", "Curl Concentrado - Bicep", "Elevacion Lateral - Hombro"];
     this.DescripcionEjercicio = ["Ejercicio que busca trabajar los musculos de espalda y pectoral","Ejercicio que busca trabajar los musculos de la parte frontal del brazo","Ejercicio que busca trabajar los musculos que confroman el hombro"];
   }

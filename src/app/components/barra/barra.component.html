@@ -1,8 +1,27 @@
-<div class="container-fluid">
-    <nav class="navbar navbar-dark bg-dark">
-        <a routerLink="/home" class="navbar-brand">Crear Rutina</a>
-        <a routerLink="/play" class="navbar-brand">Comenzar Ejercicio</a>
-        <a routerLink="/analytics" class="navbar-brand">Analytics</a>
-        <a class="navbar-brand">Contactanos</a>
-    </nav>
-</div>
+<!-- Navigation -->
+<nav class="navbar navbar-expand-sm navbar-dark bg-dark fixed-top">
+    <div class="container">
+        <a class="navbar-brand" routerLink="/home">iGloveGT</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+            <ul class="navbar-nav ml-auto">
+                <li class="nav-item">
+                    <a routerLink="/home" class="nav-link"><i class="fas fa-dumbbell"></i>  Crear Rutina</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/play" class="nav-link"><i class="fas fa-running"></i>  Comenzar Ejercicio</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/analytics" class="nav-link"><i class="fas fa-running"></i>  Analytics</a>
+                </li>
+                <li class="nav-item">
+                    <a routerLink="/contacto" class="nav-link"><i class="far fa-address-book"></i>  Contactanos</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<br><br><br>
