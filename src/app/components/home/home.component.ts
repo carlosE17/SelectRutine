@@ -4,8 +4,8 @@ import { Title } from '@angular/platform-browser';
 enum TipoEjercicio { Espalda = 0, bicep = 1, hombro = 2 };
 interface Exercise {
   tipo: TipoEjercicio;
-  nSets: number;
-  nReps: number;
+  sets: number;
+  reps: number;
 }
 
 @Component({
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   tipoActual = TipoEjercicio.Espalda;
   constructor(private titleService: Title) {
     this.titleService.setTitle('Rutinas');
-    this.TiposDeEjercicio = ["Espalda", "Bicep", "Hombro"];
+    this.TiposDeEjercicio = ["Remo Horizontal - Espalda", "Curl Concentrado - Bicep", "Elevacion Lateral - Hombro"];
     this.DescripcionEjercicio = ["Ejercicio que busca trabajar los musculos de espalda y pectoral","Ejercicio que busca trabajar los musculos de la parte frontal del brazo","Ejercicio que busca trabajar los musculos que confroman el hombro"];
   }
 
@@ -32,7 +32,7 @@ export class HomeComponent implements OnInit {
     console.log(this.tipoActual);
   }
   addToRutina(s: number, r: number) {
-    this.ArregloEjercicios.push({ tipo: this.tipoActual, nSets: s, nReps: r });
+    this.ArregloEjercicios.push({ tipo: this.tipoActual+1, sets: s, reps: r });
     localStorage.setItem(this.nArr, JSON.stringify(this.ArregloEjercicios));
   }
   clearRutina() {

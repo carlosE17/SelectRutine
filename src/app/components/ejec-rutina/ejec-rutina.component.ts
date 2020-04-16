@@ -21,13 +21,13 @@ export class EjecRutinaComponent implements OnInit {
   totalSets = 2;
   ejercicioActual = 0;
   activo = true;
-  malas=0;
-  buenas=0;
+  malas = 0;
+  buenas = 0;
   constructor(private servicioHttp: ApiService, private socketConnection: SocketService) {
   }
 
   ngOnInit(): void {
-    this.servicioHttp.saveRutina(JSON.parse(localStorage.getItem('ArregloE')));
+    this.servicioHttp.saveRutina({ rutina: JSON.parse(localStorage.getItem('ArregloE')) });
     timer(0, 1000).subscribe(ellapsedCycles => {
       if (this.activo) {
         this.seg++;
@@ -72,12 +72,16 @@ export class EjecRutinaComponent implements OnInit {
 
   pausar() {
     this.activo = false;
+    this.servicioHttp.sendPausa({ pausa: 1 });
   }
   continuar() {
     this.activo = true;
   }
   finalizar() {
-
+    this.activo = false;
+    this.seg = 0;
+    this.min = 0;
+    this.servicioHttp.sendPausa({ pausa: 2 });
   }
 
 

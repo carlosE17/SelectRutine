@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 
 
@@ -8,14 +7,18 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ApiService {
-  localUrl = 'httpbin.org';
+  API_URI = 'http://3.15.152.179:3000/api';
   constructor(private http: HttpClient) { }
 
-  pruebaGet() {
-    console.log(`${this.localUrl}/get`);
-    return this.http.get(`${this.localUrl}/get`);
+
+  saveRutina(lista:any) {
+    console.log(lista);
+    return this.http.post(`${this.API_URI}/newRutina`, lista);
   }
-  saveRutina(ListaE) {
-    //enviar al servidor
+
+  sendPausa(p:any){
+    console.log(p);
+    return this.http.post(`${this.API_URI}/newPausa`, p);
   }
+
 }
