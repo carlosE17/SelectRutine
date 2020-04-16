@@ -68,6 +68,14 @@ export class SocketService {
     });
   }
 
+  public getEjercicio = () => {
+    return Observable.create((observer) => {
+      this.socket.on('ejercicio', (v) => {
+        observer.next(v);
+      });
+    });
+  }
+
 
 
 }
