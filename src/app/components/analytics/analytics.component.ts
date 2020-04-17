@@ -64,12 +64,17 @@ export class AnalyticsComponent implements OnInit {
 
     }
     type_ejercicio(tmp){
-        var temp:any=null;
-        temp=document.getElementById("inputEjercicio");
-        console.log(temp);
-        /*if(.toLowerCase()){
 
-        }*/
+        console.log(tmp);
+        if(tmp.toLowerCase()=='hombro'){
+            this.nombre_id=3;
+        }
+        else if(tmp.toLowerCase()=='espalda'){
+            this.nombre_id=1;
+        }
+        else if(tmp.toLowerCase()=='bicep'){
+            this.nombre_id=2;
+        }
     }
 
     limpiar() {
@@ -323,6 +328,18 @@ export class AnalyticsComponent implements OnInit {
     }
     btnPeso() {
         var color:string='#e400ff';
+        if(this.nombre_id==3){//hombro
+            color='#4b67f2';
+
+        }
+        else if(this.nombre_id==2){//bicep
+            color='#e25e5e';
+
+        }
+        else if(this.nombre_id==1){//espalda
+            color= '#2ecc71' ;
+
+        }
         this.apiService.getRelacionRep().subscribe(
             res => {
                 this.relacion=res;
@@ -357,7 +374,19 @@ export class AnalyticsComponent implements OnInit {
     }
     btnRC() {
         //metodo a llamar para la data
-        var color:string='#e74c3c';
+        var color:string='#e400ff';
+        if(this.nombre_id==3){//hombro
+            color='#02177c';
+
+        }
+        else if(this.nombre_id==2){//bicep
+            color='#f30505';
+
+        }
+        else if(this.nombre_id==1){//espalda
+            color= '#0f9806' ;
+
+        }
         this.apiService.getRelacionRep().subscribe(
             res => {
                 this.relacion=res;
