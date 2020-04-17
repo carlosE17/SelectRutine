@@ -236,7 +236,7 @@ export class AnalyticsComponent implements OnInit {
                 this.getEjercicios(fa_espalda, fa_hombro, fa_bicep);
                 this.myChart.data.labels = ["espalda", "hombro", "bicep"];
                 var exito = {
-                    label: 'Repeticiones Fallidas',
+                    label: 'Pausas',
                     data: this.ejercicios,
                     backgroundColor: [
                         '#e400ff',
