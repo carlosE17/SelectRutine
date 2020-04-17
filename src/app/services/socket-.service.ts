@@ -9,7 +9,7 @@ export class SocketService {
   private url = 'http://localhost:8080';
   private socket;
   constructor() {
-    this.socket = io.connect(this.url, { reconnect: true});
+    this.socket = io.connect(this.url);
   }
 
   public getPeso = () => {
