@@ -83,20 +83,26 @@
                                     Tu Rutina: {{ArregloEjercicios.length}}
                                 </div>
                                 <div class="card-body">
-                                    <div class="row">
-                                        <small class="text-dark">Reps: repeticiones a realizar por cada serie. </small>
-                                        <ul class="list-group mb-3">
-                                            <li *ngFor="let e of ArregloEjercicios"
-                                                class="list-group-item d-flex justify-content-between lh-condensed">
-                                                <div>
-                                                    <span>{{TiposDeEjercicio[e.tipo-1]}} </span>
-                                                    <small class="text-muted">{{DescripcionEjercicio[e.tipo-1]}}</small>
-                                                </div>
-                                                <span class="text-muted">Sets: {{e.sets}}</span>
-                                                <span class="text-muted">Reps: {{e.reps}}</span>
-                                            </li>
-                                        </ul>
-                                    </div>
+                                    <table class="table-striped table-bordered col-md-12">
+                                        <thead class="thead-dark">
+                                            <tr>
+                                                <th scope="col">No.</th>
+                                                <th scope="col">Ejercicio</th>
+                                                <th scope="col">Descripcion</th>
+                                                <th scope="col">Series</th>
+                                                <th scope="col">Repeticiones</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr *ngFor="let e of ArregloEjercicios; let i = index">
+                                                <th scope="row">{{i+1}}</th>
+                                                <td>{{TiposDeEjercicio[e.tipo-1]}}</td>
+                                                <td>{{DescripcionEjercicio[e.tipo-1]}}</td>
+                                                <td>{{e.sets}}</td>
+                                                <td>{{e.reps}}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>

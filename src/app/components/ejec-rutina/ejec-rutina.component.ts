@@ -106,6 +106,8 @@ export class EjecRutinaComponent implements OnInit {
         console.log(res);
       }
     );
+    let ArregloEjercicios = []
+    localStorage.setItem("ArregloE", JSON.stringify(ArregloEjercicios));
   }
   finalizar() {
     this.activo = false;
