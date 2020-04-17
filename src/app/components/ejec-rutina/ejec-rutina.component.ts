@@ -57,7 +57,7 @@ export class EjecRutinaComponent implements OnInit {
     });
 
     this.socketConnection.getSets().subscribe((v: number) => {
-     
+
       this.sets = v;
     });
 
@@ -68,24 +68,12 @@ export class EjecRutinaComponent implements OnInit {
     this.socketConnection.getTs().subscribe((v: number) => {
       if (v == 1) {
         //this.pausar();
-        this.servicioHttp.sendPausa({ pausa: 1 }).subscribe(
-          res => {
-            this.toastr.info('Rutina en pausa', 'Pausa!');
-            console.log(res);
-          },
-          err => console.log(err)
-        );
+        this.activo = false;
+        this.toastr.info('Rutina en pausa', 'Pausa!');
       } else if (v == 2) {
-        this.servicioHttp.sendPausa({ pausa: 2 }).subscribe(
-          res => {
-            this.toastr.error('Rutina Terminada', 'Pausa!');
-            this.activo = false;
-            this.seg = 0;
-            this.min = 0;
-            console.log(res);
-          },
-          err => console.log(err)
-        );
+        this.activo = false;
+        this.yaInicio = false;
+        this.toastr.error('Rutina Terminada', 'Pausa!');
       } else if (v == 0 && !this.activo && this.yaInicio) {
         this.activo = true;
         this.toastr.success('Puede Continar con la rutina', 'Reanudar!');
@@ -108,8 +96,15 @@ export class EjecRutinaComponent implements OnInit {
   }
 
   pausar() {
-    this.activo = false;
-    this.servicioHttp.sendPausa({ pausa: 1 });
+    // this.servicioHttp.sendPausa({ pausa: 1 });
+    this.servicioHttp.sendPausa({ pausa: 1 }).subscribe(
+      res => {
+        this.toastr.info('Rutina en pausa', 'Pausa!');
+        this.activo = false;
+        console.log(res);
+      },
+      err => console.log(err)
+    );
   }
   continuar() {
     this.activo = true;
@@ -124,10 +119,17 @@ export class EjecRutinaComponent implements OnInit {
     localStorage.setItem("ArregloE", JSON.stringify(ArregloEjercicios));
   }
   finalizar() {
-    this.activo = false;
-    this.seg = 0;
-    this.min = 0;
-    this.servicioHttp.sendPausa({ pausa: 2 });
+    this.servicioHttp.sendPausa({ pausa: 2 }).subscribe(
+      res => {
+        this.toastr.error('Rutina Terminada', 'Pausa!');
+        this.activo = false;
+        this.yaInicio = false;
+        this.seg = 0;
+        this.min = 0;
+        console.log(res);
+      },
+      err => console.log(err)
+    );
   }
 
 
