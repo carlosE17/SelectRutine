@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { timer } from "rxjs";
 import { SocketService } from '../../services/socket-.service';
+import { ToastrService } from 'ngx-toastr';
 
 
 @Component({
@@ -21,27 +22,27 @@ export class EjecRutinaComponent implements OnInit {
   totalSets = 2;
   ejercicioActual = 1;
   activo = false;
-  yaInicio=false;
+  yaInicio = false;
   malas = 0;
   buenas = 0;
-  tpausa=0;
-  constructor(private servicioHttp: ApiService, private socketConnection: SocketService) {
+  tpausa = 0;
+  constructor(private servicioHttp: ApiService, private socketConnection: SocketService, private toastr: ToastrService) {
   }
 
   ngOnInit(): void {
-    
+
     timer(0, 1000).subscribe(ellapsedCycles => {
-      if (this.activo&&this.yaInicio) {
+      if (this.activo && this.yaInicio) {
         this.seg++;
         if (this.seg === 60) {
           this.min++;
           this.seg = 0;
         }
-      }else{
+      } else {
         this.tpausa++;
-        if(this.tpausa===30){
-          this.activo=true;
-          this.tpausa=0;
+        if (this.tpausa === 30) {
+          this.activo = true;
+          this.tpausa = 0;
         }
       }
 
@@ -56,6 +57,7 @@ export class EjecRutinaComponent implements OnInit {
     });
 
     this.socketConnection.getSets().subscribe((v: number) => {
+     
       this.sets = v;
     });
 
@@ -64,6 +66,16 @@ export class EjecRutinaComponent implements OnInit {
     });
 
     this.socketConnection.getTs().subscribe((v: number) => {
+      if (v === 1) {
+        this.toastr.info('Rutina en pausa', 'Pausa!');
+        this.pausar();
+      } else if (v === 2) {
+        this.toastr.error('Rutina Terminada', 'Pausa!');
+        this.finalizar();
+      } else if (v === 0 && !this.activo && this.yaInicio) {
+        this.activo = true;
+        this.toastr.success('Puede Continar con la rutina', 'Reanudar!');
+      }
       this.totalSets = v;
     });
 
@@ -87,10 +99,10 @@ export class EjecRutinaComponent implements OnInit {
   }
   continuar() {
     this.activo = true;
-    this.yaInicio=true;
-    this.tpausa=0;
+    this.yaInicio = true;
+    this.tpausa = 0;
     this.servicioHttp.saveRutina({ rutina: JSON.parse(localStorage.getItem('ArregloE')) }).subscribe(
-      (res:any)=>{
+      (res: any) => {
         console.log(res);
       }
     );
