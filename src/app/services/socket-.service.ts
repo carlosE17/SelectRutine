@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class SocketService {
-  private url = 'http://3.22.186.157:3000';
+  private url = 'http://3.15.190.231:8080';
   private socket;
   constructor() {
     this.socket = io.connect(this.url);
