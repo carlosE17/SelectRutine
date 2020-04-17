@@ -66,13 +66,27 @@ export class EjecRutinaComponent implements OnInit {
     });
 
     this.socketConnection.getTs().subscribe((v: number) => {
-      if (v === 1) {
-        this.toastr.info('Rutina en pausa', 'Pausa!');
-        this.pausar();
-      } else if (v === 2) {
-        this.toastr.error('Rutina Terminada', 'Pausa!');
-        this.finalizar();
-      } else if (v === 0 && !this.activo && this.yaInicio) {
+      if (v == 1) {
+        //this.pausar();
+        this.servicioHttp.sendPausa({ pausa: 1 }).subscribe(
+          res => {
+            this.toastr.info('Rutina en pausa', 'Pausa!');
+            console.log(res);
+          },
+          err => console.log(err)
+        );
+      } else if (v == 2) {
+        this.servicioHttp.sendPausa({ pausa: 2 }).subscribe(
+          res => {
+            this.toastr.error('Rutina Terminada', 'Pausa!');
+            this.activo = false;
+            this.seg = 0;
+            this.min = 0;
+            console.log(res);
+          },
+          err => console.log(err)
+        );
+      } else if (v == 0 && !this.activo && this.yaInicio) {
         this.activo = true;
         this.toastr.success('Puede Continar con la rutina', 'Reanudar!');
       }
