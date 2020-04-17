@@ -24,7 +24,7 @@ export class AnalyticsComponent implements OnInit {
     ngOnInit(): void {
 
         this.myChart = new Chart('myChart', {
-            type: 'bar',
+            type: 'line',
             data: {
                 labels: [] //'1pm', '2pm', '2pm', '4pm', '5pm', '6pm', '7pm', '8pm'
             },
@@ -106,8 +106,9 @@ export class AnalyticsComponent implements OnInit {
          });*/
 
     }
-    newSensor(chart: Chart, data): void {
+    newSensor(chart: Chart, data,type:string): void {
         chart.data.datasets.push(data);
+        chart.type=type;
         chart.update();
     }
     limpiarData(): void {
@@ -156,7 +157,7 @@ export class AnalyticsComponent implements OnInit {
                     fill: false
                 }
                 //myChart.type=
-                this.newSensor(this.myChart, exito);
+                this.newSensor(this.myChart, exito,'bar');
                 this.ejercicios = [];
             },
             err => console.error(err)
@@ -198,7 +199,7 @@ export class AnalyticsComponent implements OnInit {
                     fill: false
                 }
                 //myChart.type=
-                this.newSensor(this.myChart, exito);
+                this.newSensor(this.myChart, exito,'bar');
                 this.ejercicios = [];
 
             },
@@ -241,7 +242,7 @@ export class AnalyticsComponent implements OnInit {
                     fill: false
                 }
                 //myChart.type=
-                this.newSensor(this.myChart, exito);
+                this.newSensor(this.myChart, exito,'bar');
                 this.ejercicios = [];
             },
             err => console.error(err)
@@ -283,7 +284,7 @@ export class AnalyticsComponent implements OnInit {
                     fill: false
                 }
                 //myChart.type=
-                this.newSensor(this.myChart, exito);
+                this.newSensor(this.myChart, exito,'bar');
                 this.ejercicios = [];
             },
             err => console.error(err)
@@ -302,7 +303,7 @@ export class AnalyticsComponent implements OnInit {
                     rep_ef.push(this.eficiencias[i].Eficiencia);
                 }
                 this.myChart.data.labels = rep_labels;
-                this.myChart.type='line'
+                this.myChart.type='line';
                 var exito = {
                     label: 'Eficiencia',
                     data: rep_ef,
@@ -315,13 +316,14 @@ export class AnalyticsComponent implements OnInit {
                     fill: false
                 }
                 //myChart.type=
-                this.newSensor(this.myChart, exito);
+                this.newSensor(this.myChart, exito,'bar');
             },
             err => console.error(err)
         );
     }
     btnPeso() {
-        this.apiService.getEficienciaRutina().subscribe(
+        var color:string='#e400ff';
+        this.apiService.getRelacionRep().subscribe(
             res => {
                 this.relacion=res;
                 console.log(res);
@@ -329,48 +331,64 @@ export class AnalyticsComponent implements OnInit {
                 var rep_ef = [];
                 for (var i = 0; i < this.relacion.length; i++) {
                     if(this.nombre_id==this.relacion[i].tipo){
-                        rep_labels.push("Rpeticion "+this.relacion[i].rutina);
-                        rep_ef.push(this.eficiencias[i].Eficiencia);
+                        rep_labels.push("Repeticion "+this.relacion[i].repeticion);
+                        rep_ef.push(this.relacion[i].peso);
                     }
                     
                 }
                 this.myChart.data.labels = rep_labels;
-                this.myChart.type='line'
+                this.myChart.type='line';
                 var exito = {
-                    label: 'Eficiencia',
+                    label: 'Peso',
                     data: rep_ef,
                     backgroundColor: [
-                        '#e400ff',
+                        color,
                     ],
                     borderColor: [
-                        '#e400ff'
+                        color
                     ],
                     fill: false
                 }
                 //myChart.type=
-                this.newSensor(this.myChart, exito);
+                this.newSensor(this.myChart, exito,'line');
             },
             err => console.error(err)
         );
     }
     btnRC() {
         //metodo a llamar para la data
-        var rep_labels = ["sesion1", "sesion2", "sesion3"];
-        var rep_total = [30, 30, 20];
-        this.myChart.data.labels = rep_labels;
-        var exito = {
-            label: this.nombre,
-            data: rep_total,
-            backgroundColor: [
-                '#e400ff',
-            ],
-            borderColor: [
-                '#e400ff'
-            ],
-            fill: false
-        }
-        //myChart.type=
-        this.newSensor(this.myChart, exito);
+        var color:string='#e74c3c';
+        this.apiService.getRelacionRep().subscribe(
+            res => {
+                this.relacion=res;
+                console.log(res);
+                var rep_labels = [];
+                var rep_ef = [];
+                for (var i = 0; i < this.relacion.length; i++) {
+                    if(this.nombre_id==this.relacion[i].tipo){
+                        rep_labels.push("Repeticion "+this.relacion[i].repeticion);
+                        rep_ef.push(this.relacion[i].ritmo);
+                    }
+                    
+                }
+                this.myChart.data.labels = rep_labels;
+                
+                var exito = {
+                    label: 'Ritmo cardiaco',
+                    data: rep_ef,
+                    backgroundColor: [
+                        color,
+                    ],
+                    borderColor: [
+                        color
+                    ],
+                    fill: false
+                }
+                this.myChart.type='line';
+                this.newSensor(this.myChart, exito,'line');
+            },
+            err => console.error(err)
+        );
     }
 
 
