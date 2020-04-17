@@ -21,4 +21,22 @@ export class ApiService {
     return this.http.post(`${this.API_URI}/newPausa`, p);
   }
 
+  getCorrectas() {
+    return this.http.get(`${this.API_URI}/getCorrectas`);
+  }
+  getIncorrectas() {
+    return this.http.get(`${this.API_URI}/getIncorrectas`);
+  }
+  getPausa() {
+    return this.http.get(`${this.API_URI}/getPausa`);
+  }
+  getEficienciaEjercicio() {
+    return this.http.get(`${this.API_URI}/getEficienciaEjercicio`);
+  }
+  getEficienciaRutina() {
+    return this.http.get(`${this.API_URI}/getEficienciaRutina`);
+  }
+  getRelacionRep() {
+    return this.http.get(`${this.API_URI}/getRelacionRep`);
+  }
 }
