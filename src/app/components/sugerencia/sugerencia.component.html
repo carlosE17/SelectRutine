@@ -4,17 +4,18 @@
     <hr>
     <div class="row">
         <div class="col-md-12">
-            <div class="card text-center">
+            <div class="card text-left">
                 <div class="card-header bg-dark text-white d-flex justify-content-between align-items-center">
                     Sugerencias
                 </div>
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="card text-center">
+                            <div class="card text-left">
                                 <div
                                     class="card-header bg-light text-black d-flex justify-content-between align-items-center">
-                                    Enfocar en mejorar la Tecnica
+                                   <b> Enfocar en mejorar la Tecnica </b> <br>
+                                    {{TiposDeEjercicio[eficienciaActual]}}, Eficiencia: {{eficienciaEjercicios[0].Eficiencia}}
                                 </div>
                                 <div class="card-body">
                                     Este ejercicio es el que cuenta con peor eficiencia, sueles fallar mucho, enfocate en mejorar la tecnica.
@@ -23,10 +24,11 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="card text-center">
+                            <div class="card text-left">
                                 <div
                                     class="card-header bg-light text-black d-flex justify-content-between align-items-center">
-                                    Manten un ejercicio proporcional
+                                    <b> Manten un ejercicio proporcional </b><br>
+                                     {{TiposDeEjercicio[menosRepsActual]}}, Reps: {{repeticionesT[0].Total}}
                                 </div>
                                 <div class="card-body">
                                     Procura mantener un equilibrio en el trabajo de tus musculos, 
@@ -36,13 +38,15 @@
                             </div>
                         </div>
                         <div class="col-md-12">
-                            <div class="card text-center">
+                            <div class="card text-left">
                                 <div
                                     class="card-header bg-light text-black d-flex justify-content-between align-items-center">
-                                    Procura Ejercitarte al menos 3 dias por semana e hidratarte bien! 
+                                <b>Procura Ejercitarte al menos 3 dias por semana e hidratarte bien! </b>
                                 </div>
                                 <div class="card-body">
                                     Ejercitarse reduce los niveles de estres, brindando una mejor calidad de vida.
+                                    <img src= 'https://image.freepik.com/free-vector/man-is-drinking-water_68196-301.jpg' 
+                                    class="img-fluid rounded mx-auto d-block">
                                 </div>
                             </div>
                         </div>

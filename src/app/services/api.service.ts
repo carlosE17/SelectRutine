@@ -39,4 +39,9 @@ export class ApiService {
   getRelacionRep() {
     return this.http.get(`${this.API_URI}/getRelacionRep`);
   }
+
+  getRepeticionesTipo() {
+    return this.http.get(`${this.API_URI}/getRepeticionesTipo`);
+  }
+  
 }
