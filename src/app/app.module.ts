@@ -11,6 +11,9 @@ import {ApiService} from './services/api.service';
 import {SocketService} from './services/socket-.service';
 import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
+import { SugerenciaComponent } from './components/sugerencia/sugerencia.component';
 
 @NgModule({
   declarations: [
@@ -19,14 +22,17 @@ import { ContactoComponent } from './components/contacto/contacto.component';
     HomeComponent,
     BarraComponent,
     AnalyticsComponent,
-    ContactoComponent
+    ContactoComponent,
+    SugerenciaComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    BrowserAnimationsModule, // required animations module
+    ToastrModule.forRoot() // ToastrModule added
   ],
   providers: [ApiService,SocketService],
   bootstrap: [AppComponent]
