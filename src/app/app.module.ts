@@ -13,6 +13,7 @@ import { AnalyticsComponent } from './components/analytics/analytics.component';
 import { ContactoComponent } from './components/contacto/contacto.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
+import { SugerenciaComponent } from './components/sugerencia/sugerencia.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { ToastrModule } from 'ngx-toastr';
     HomeComponent,
     BarraComponent,
     AnalyticsComponent,
-    ContactoComponent
+    ContactoComponent,
+    SugerenciaComponent
   ],
   imports: [
     BrowserModule,
