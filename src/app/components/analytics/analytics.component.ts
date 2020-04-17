@@ -63,7 +63,7 @@ export class AnalyticsComponent implements OnInit {
 
 
     }
-    type_ejercicio(){
+    type_ejercicio(tmp){
         var temp:any=null;
         temp=document.getElementById("inputEjercicio");
         console.log(temp);
@@ -291,13 +291,13 @@ export class AnalyticsComponent implements OnInit {
     }
     btnEficiencia() {
         //metodo a llamar para la data
-        this.apiService.getRelacionRep().subscribe(
+        this.apiService.getEficienciaRutina().subscribe(
             res => {
-                this.relacion=res;
+                this.eficiencias=res;
                 console.log(res);
                 var rep_labels = [];
                 var rep_ef = [];
-                for (var i = 0; i < this.relacion.length; i++) {
+                for (var i = 0; i < this.eficiencias.length; i++) {
                     rep_labels.push("Rutina "+this.eficiencias[i].rutina);
                     rep_ef.push(this.eficiencias[i].Eficiencia);
                 }
@@ -321,7 +321,37 @@ export class AnalyticsComponent implements OnInit {
         );
     }
     btnPeso() {
-        
+        this.apiService.getEficienciaRutina().subscribe(
+            res => {
+                this.relacion=res;
+                console.log(res);
+                var rep_labels = [];
+                var rep_ef = [];
+                for (var i = 0; i < this.relacion.length; i++) {
+                    if(this.nombre_id==this.relacion[i].tipo){
+                        rep_labels.push("Rpeticion "+this.relacion[i].rutina);
+                        rep_ef.push(this.eficiencias[i].Eficiencia);
+                    }
+                    
+                }
+                this.myChart.data.labels = rep_labels;
+                this.myChart.type='line'
+                var exito = {
+                    label: 'Eficiencia',
+                    data: rep_ef,
+                    backgroundColor: [
+                        '#e400ff',
+                    ],
+                    borderColor: [
+                        '#e400ff'
+                    ],
+                    fill: false
+                }
+                //myChart.type=
+                this.newSensor(this.myChart, exito);
+            },
+            err => console.error(err)
+        );
     }
     btnRC() {
         //metodo a llamar para la data
