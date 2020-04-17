@@ -1,1 +1,35 @@
 <app-barra></app-barra>
+<!-- CHARTS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.js"></script>
+<div class="container p-4" onload="getdata()">
+    <input type="text" class="btn btn-outline-primary" id="inputFecha">
+    <button type="button" class="btn btn-outline-primary" id="btnFecha">Fecha</button>
+    <input type="text" class="btn btn-outline-primary" id="inputEjercicio">
+    <button type="button" class="btn btn-outline-primary" id="btnEjercicio">Ejercicio</button>    
+    <hr>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="card text-center">
+                <div class="card-header bg-primary text-white d-flex align-items-center">
+                    <h5>REPORTES</h5>
+                </div>
+                <button type="button" class="btn btn-outline-primary" id="btnRExito" (click)="btnRExito()">Repeticiones Exitosas</button>
+                <button type="button" class="btn btn-outline-primary" id="btnRFallo" (click)="btnRFallo()">Repeticiones Fallidas</button>
+                <button type="button" class="btn btn-outline-primary" id="btnPausas"(click)="btnPausas()">Pausas Obligatorias</button>
+                <button type="button" class="btn btn-outline-primary" id="btnEfiGeneral"(click)="btnEfiGeneral()">Eficiencia General</button>
+                <button type="button" class="btn btn-outline-primary" id="btnEficiencia" (click)="btnEficiencia()" >Eficiencia</button>
+                <button type="button" class="btn btn-outline-primary" id="btnPeso" (click)="btnPeso()">Peso</button>
+                <button type="button" class="btn btn-outline-primary" id="btnRC" (click)="btnRC()">Ritmo Cardiaco</button>
+                <button type="button" class="btn btn-outline-danger" id="btnLimpiar" (click)="limpiarData()">Limpiar Grafica</button>
+            </div>
+        </div>
+        <div class="col-md-6" id="idChart">
+            <div class="card text-center">
+                <div class="card-header text-white d-flex justify-content-between align-items-left">
+                    <canvas id="myChart" width="400" height="400"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+   
+</div>

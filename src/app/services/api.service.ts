@@ -7,7 +7,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root'
 })
 export class ApiService {
-  API_URI = 'http://3.15.152.179:3000/api';
+  API_URI = 'http://3.15.190.231:3000/api';
   constructor(private http: HttpClient) { }
 
 
